@@ -20,7 +20,7 @@ class Writer
 m/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
 
   <trk>
-	<trkseg>
+    <trkseg>
 
 HEAD;
 
@@ -30,11 +30,11 @@ HEAD;
 		}
 
 		$result .= <<<FOOT
-	</trkseg>
+    </trkseg>
   </trk>
 </gpx>
 
-	FOOT;
+FOOT;
 
 		file_put_contents( $fileName, $result );
 	}
