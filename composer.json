@@ -1,0 +1,27 @@
+{
+    "name": "derickr/gpx-utils",
+    "type": "library",
+    "description": "Set of utils to merge and sort different types of GPX files",
+	"keywords": ["gpx", "gps", "algorithms"],
+    "homepage": "https://derickrethans.nl/projects.php#gpx-utils",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Derick Rethans",
+			"email": "github@derickrethans.nl",
+			"homepage": "https://derickrethans.nl",
+			"role": "developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DerickR\\" : "src/"
+        }
+    },
+	"require": {
+		"php": ">=8.0.0"
+	},
+    "require-dev": {
+        "phpunit/phpunit": "~10.0"
+    }
+}
