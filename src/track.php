@@ -14,5 +14,26 @@ class Track
 	{
 		return $this->track;
 	}
+
+	function getFirstPointAsGeoJson() : array
+	{
+		return [
+			'type' => 'Point',
+			'coordinates' => $this->track[0]
+		];
+	}
+
+	function getLastPointAsGeoJson() : array
+	{
+		return [
+			'type' => 'Point',
+			'coordinates' => $this->track[count($this->track) - 1]
+		];
+	}
+
+	function reverse() : void
+	{
+		$this->track = array_reverse( $this->track );
+	}
 }
 ?>
