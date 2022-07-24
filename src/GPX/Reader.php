@@ -25,7 +25,7 @@ class Reader
 		}
 		if ( count( $points ) > 0 )
 		{
-			return $points;
+			return new Track( $points );
 		}
 
 		/* No points in a rte/rtept, try trk/trkseg/trkpt */
