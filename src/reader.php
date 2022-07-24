@@ -7,10 +7,10 @@ class Reader
 
 	function __construct( string $fileName )
 	{
-		$this->track = $this->parsGpx( $fileName );
+		$this->track = $this->parseGpx( $fileName );
 	}
 
-	function parseGpx( $fileName ) : Track
+	private function parseGpx( $fileName ) : Track
 	{
 		$points = [];
 		$s = simplexml_load_file( $file );
@@ -41,6 +41,11 @@ class Reader
 		}
 
 		return new Track( $points );
+	}
+
+	public function getTrack() : Track
+	{
+		return $this->track;
 	}
 }
 ?>
