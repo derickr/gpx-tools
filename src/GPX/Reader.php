@@ -13,7 +13,7 @@ class Reader
 	private function parseGpx( $fileName ) : Track
 	{
 		$points = [];
-		$s = simplexml_load_file( $file );
+		$s = simplexml_load_file( $fileName );
 
 		/* Try rte/rtept */
 		foreach ( $s->rte as $rte )
