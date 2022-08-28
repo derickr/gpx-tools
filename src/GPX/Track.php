@@ -31,6 +31,14 @@ class Track
 		];
 	}
 
+	function appendTrack( Track $newTrack ) : void
+	{
+		foreach ( $newTrack->getTrackData() as $pointPair )
+		{
+			$this->track[] = $pointPair;
+		}
+	}
+
 	function reverse() : void
 	{
 		$this->track = array_reverse( $this->track );
