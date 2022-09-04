@@ -107,3 +107,11 @@ For example to merge all GPX files in a directory, you would use::
 	$writer->writeGpx( 'route-test.gpx' );
 	?>
 
+Changelog
+=========
+
+======== ==================
+Release  Changes
+======== ==================
+0.1.0    Initial Release
+======== ==================
