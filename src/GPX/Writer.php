@@ -1,5 +1,5 @@
 <?php
-namespace Derickr\GPX;
+namespace DerickR\GPX;
 
 class Writer
 {
@@ -11,6 +11,11 @@ class Writer
 	}
 
 	function writeGpx( string $fileName )
+	{
+		file_put_contents( $fileName, $this->getGpxData() );
+	}
+
+	function getGpxData() : string
 	{
 		$points = $this->track->getTrackData();
 
@@ -36,7 +41,7 @@ HEAD;
 
 FOOT;
 
-		file_put_contents( $fileName, $result );
+		return $result;
 	}
 }
 ?>
