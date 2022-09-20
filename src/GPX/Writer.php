@@ -1,5 +1,6 @@
 <?php
-namespace Derickr\GPX;
+
+namespace DerickR\GPX;
 
 class Writer
 {

@@ -1,4 +1,5 @@
 <?php
+
 namespace DerickR\GPX;
 
 class Reader
