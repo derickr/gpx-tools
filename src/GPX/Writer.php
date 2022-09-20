@@ -13,6 +13,11 @@ class Writer
 
 	function writeGpx( string $fileName )
 	{
+		file_put_contents( $fileName, $this->getGpxData() );
+	}
+
+	function getGpxData() : string
+	{
 		$points = $this->track->getTrackData();
 
 		$result = <<<HEAD
@@ -37,7 +42,7 @@ HEAD;
 
 FOOT;
 
-		file_put_contents( $fileName, $result );
+		return $result;
 	}
 }
 ?>
