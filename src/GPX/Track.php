@@ -1,5 +1,4 @@
 <?php
-
 namespace DerickR\GPX;
 
 class Track
