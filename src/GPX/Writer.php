@@ -12,10 +12,10 @@ class Writer
 
 	function writeGpx( string $fileName )
 	{
-		file_put_contents( $fileName, $this->getGpxData() );
+		file_put_contents( $fileName, $this->getGpxString() );
 	}
 
-	function getGpxData() : string
+	function getGpxString() : string
 	{
 		$points = $this->track->getTrackData();
 

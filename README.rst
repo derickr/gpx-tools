@@ -39,6 +39,19 @@ You can write a track to GPX file with::
 	$writer->writeGpx( 'route-test.gpx' );
 	?>
 
+Instead of writing GPX XML directly to a file, it is also possible to retrieve
+a string with this information, by using the `getGpxString()` method::
+
+	<?php
+	require __DIR__ . '/vendor/autoload.php';
+
+	use DerickR\GPX\Writer;
+
+	$writer = new Writer( $track );
+	$xmlString = $writer->getGpxString();
+	?>
+
+
 Operating on Tracks
 -------------------
 
