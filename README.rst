@@ -6,20 +6,45 @@ A set of utilities to operate on GPX files and sets of GPX files.
 Reading GPX Files
 -----------------
 
-The GPX reader class ``DerickR/GPX/Reader`` can be used to read a GPX file
-into a ``DerickR/GPX/Track`` object, which encapsulates a ordered set of
-coordinate pairs. It can read GPX routes (``rte``/``rtept``) and if none are
+The GPX reader class ``DerickR/GPX/Reader`` can be used to read a GPX file.
+
+It can read GPX routes (``rte``/``rtept``) and if none are
 present, it will read a GPX track (``trk``/``trkseg``/``trkpt``) instead.
 
-You create a track with::
+You can read a GPX file with::
 	
 	<?php
 	require __DIR__ . '/vendor/autoload.php';
 	
 	use DerickR\GPX\Reader;
 
-	$track = (new Reader( $file ))->getTrack();
+	$gpxInformation = new Reader( $file );
 	?>
+
+To access the tracks, you can use the ``getTrack()`` method which returns a
+``DerickR/GPX/Track`` object, which encapsulates a ordered set of coordinate
+pairs. If the GPX file had multiple tracks, these are merged into one::
+
+	$track = $gpxInformation->getTrack();
+
+To get individual tracks out of a GPX file, you can use the ``getTracks()``
+method to obtain an array of ``Track`` objects::
+
+	$tracks = $gpxInformation->getTracks();
+	foreach ( $tracks as $track )
+	{
+		/* Do something with $track */
+	}
+
+For GPX files that contain routes (``rte``/``rtept``) this will still return a
+merged track.
+
+For GPX files that contain tracks (``trk``/``trkseg``) this return an array of
+tracks, with each ``Track`` object representing a track as stored in the GPX
+file.
+
+To merge tracks stored in multiple GPX files, see `Merging GPX Files`_.
+
 
 Writing GPX Files
 -----------------
@@ -128,4 +153,5 @@ Release  Changes
 ======== ===================================================
 0.1.0    Initial Release
 0.2.0    Added the DerickR\GPX\Writer::getGpxString() method
+0.3.0    Added the DerickR\GPX\Reader::getTracks() method
 ======== ===================================================

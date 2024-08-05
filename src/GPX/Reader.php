@@ -3,14 +3,17 @@ namespace DerickR\GPX;
 
 class Reader
 {
-	private Track $track;
+	/**
+	 * @type array[Track]
+	 */
+	private array $tracks;
 
 	function __construct( string $fileName )
 	{
-		$this->track = $this->parseGpx( $fileName );
+		$this->parseGpx( $fileName );
 	}
 
-	private function parseGpx( $fileName ) : Track
+	private function parseGpx( $fileName )
 	{
 		$points = [];
 		$s = simplexml_load_file( $fileName );
@@ -25,12 +28,15 @@ class Reader
 		}
 		if ( count( $points ) > 0 )
 		{
-			return new Track( $points );
+			$this->tracks = [ new Track( $points ) ];
+			return;
 		}
 
 		/* No points in a rte/rtept, try trk/trkseg/trkpt */
 		foreach ( $s->trk as $trk )
 		{
+			$points = [];
+
 			foreach ( $trk->trkseg as $trkseg )
 			{
 				foreach ( $trkseg->trkpt as $trkpt )
@@ -38,14 +44,25 @@ class Reader
 					$points[] = [ (float) $trkpt['lon'], (float) $trkpt['lat'] ];
 				}
 			}
-		}
 
-		return new Track( $points );
+			$this->tracks[] = new Track( $points );
+		}
+		return;
 	}
 
 	public function getTrack() : Track
 	{
-		return $this->track;
+		if ( count( $this->tracks ) == 1 )
+		{
+			return $this->tracks[0];
+		}
+
+		return Utils::createMergedTrack( $this->tracks );
+	}
+
+	public function getTracks() : array
+	{
+		return $this->tracks;
 	}
 }
 ?>
